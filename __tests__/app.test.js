@@ -59,4 +59,33 @@ describe('03_separation-of-concerns-demo routes', () => {
      order
     );
   });
+  it('updates one order by id & sends message', async () => {
+    const order = await Order.insert({ quantity: 10})
+
+    return request(app)
+      .put(`/api/v1/orders/${order.id}`)
+      .send({quantity: 20})
+      .then((res)=> {
+        expect(res.body).toEqual({
+         id: '2',
+         quantity:20
+        });
+
+      })
+
+  });
+  // it('deletes one order by id & sends message', async () => {
+  //   const order = await Order.insert({ quantity: 10})
+
+  //   return request(app)
+  //     .delete(`/api/v1/orders/${order.id}`)
+  //     .then((res)=> {
+  //       expect(res.body).toEqual({
+  //        id: order.id,
+  //        quantity:10
+  //       });
+
+  //     })
+
+  // });
 });
