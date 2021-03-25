@@ -49,4 +49,14 @@ describe('03_separation-of-concerns-demo routes', () => {
      [order]
     );
   });
+  it('gets one order by id', async () => {
+    const order = await Order.insert({ quantity: 10});
+
+    const res = await request(app)
+      .get(`/api/v1/orders/${order.id}`)
+
+    expect(res.body).toEqual(
+     order
+    );
+  });
 });
