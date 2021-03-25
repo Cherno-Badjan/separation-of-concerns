@@ -67,7 +67,7 @@ describe('03_separation-of-concerns-demo routes', () => {
       .send({quantity: 20})
       .then((res)=> {
         expect(res.body).toEqual({
-         id: '2',
+         id: order.id,
          quantity:20
         });
 
